@@ -1,0 +1,8 @@
+{
+    "/herokuapp.com/*": {
+      "target": "https://findfalcone.",
+      "secure": false,
+  
+      "logLevel": "debug"
+    }
+  }

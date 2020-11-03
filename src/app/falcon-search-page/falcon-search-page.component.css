@@ -1,0 +1,36 @@
+.main{
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+.main__title,.main__subtitle{
+    width: 100%;
+    display: block;
+}
+.main__title{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+.main__subtitle{
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+.main__option{
+    min-height: 150px;
+}
+.btn-main{
+    border: 2px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    background: #fff;
+    display: block;
+    margin: auto;
+    box-shadow: 2px 2px 0px #000;
+}
+.btn-main:hover{
+    box-shadow: 0px 0px 0px #000;
+}

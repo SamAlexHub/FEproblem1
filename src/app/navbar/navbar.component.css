@@ -1,0 +1,8 @@
+.nav-menu{
+    color: #000;
+    text-decoration: none !important;
+    width: fit-content;
+}
+.nav-menu:hover{
+    text-shadow: 0px 0px 1px #000;
+}
