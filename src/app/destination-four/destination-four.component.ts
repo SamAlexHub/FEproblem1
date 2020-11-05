@@ -83,8 +83,8 @@ export class DestinationFourComponent implements OnInit {
 
   // get vechicles data
   setVechicleFour(data) {
-    this.checkDistance(data.name,data.max_distance);
-    this.setTime(data);
+    this.checkDistance(data);
+    // this.setTime(data);
   }
   
   // calculate each one time and saved to common service
@@ -94,18 +94,19 @@ export class DestinationFourComponent implements OnInit {
   }
   
   // check distance
-  checkDistance(name,v)  {
+  checkDistance(data)  {
     
-    this.radioSelected_one = name;
-    this.vechile_name.four = name;
+    this.radioSelected_one = data.name;
+  
 
-    if(this.planet_distance[0].distance > v) {
+    if(this.planet_distance[0].distance > data.max_distance) {
       this.assign = true;
       this.assign_message = "You Canot Choose This Ship! It Canot cover the Distance"
     } else {
       this.assign = false;
       this.body.planet_name = this.planets_names.dest_4;
       this.body.vechicle_name = this.vechile_name.four;
+      this.setTime(data);
       this.common.setSendData(this.body)
       
     }

@@ -83,26 +83,27 @@ export class DestinationThreeComponent implements OnInit {
 
 
   setVechicleThree(data) {
-    this.checkDistance(data.name,data.max_distance);
-    this.setTime(data);
+    this.checkDistance(data);
+    // this.setTime(data);
   }
 
   setTime(data) {
     this.time = data.max_distance / data.speed;
     this.common.setTime(this.time);
   }
-  checkDistance(name,v)  {
+  checkDistance(data)  {
     
-    this.radioSelected_one = name;
-    this.vechile_name.three = name;
+    this.radioSelected_one = data.name;
+    this.vechile_name.three = data.name;
 
-    if(this.planet_distance[0].distance > v) {
+    if(this.planet_distance[0].distance > data.max_distance) {
       this.assign = true;
       this.assign_message = "You Canot Choose This Ship! It Canot cover the Distance"
     } else {
       this.assign = false;
       this.body.planet_name = this.planets_names.dest_3;
       this.body.vechicle_name = this.vechile_name.three;
+      this.setTime(data);
       this.common.setSendData(this.body)
       
     }

@@ -78,8 +78,8 @@ export class DestinationOneComponent implements OnInit {
 
 
   setVechicleOne(data) {
-    this.checkDistance(data.name, data.max_distance);
-    this.setTime(data);
+    this.checkDistance(data);
+    // this.setTime(data);
   }
   // calculate each one time and save to common service
   setTime(data) {
@@ -87,16 +87,19 @@ export class DestinationOneComponent implements OnInit {
     this.common.setTime(this.time);
   }
 
-  checkDistance(name, v) {
-    this.radioSelected_one = name;
+  checkDistance(data) {
+    console.log('data',data);
+    this.radioSelected_one = data.name;
+    
 
-    if (this.planet_distance[0].distance > v) {
+    if (this.planet_distance[0].distance > data.max_distance) {
       this.assign = true;
       this.assign_message = "You Canot Choose This Ship! It Canot cover the Distance"
     } else {
       this.assign = false;
       this.body.planet_name = this.planets_names.dest_1;
       this.body.vechicle_name = this.radioSelected_one;
+      this.setTime(data)
       this.common.setSendData(this.body)
 
     }
