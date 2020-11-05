@@ -1,14 +1,19 @@
 <div>
   <label class="w-100" for="">Destination - 2</label>
-  <select name="planet" id="dest" [(ngModel)]="planets_names.destination_1" (click)="destination1(planets_names)">
-    <option *ngFor="let planet of planets;" [value]="planet.distance">{{planet.name}}</option>
+  <select name="planet" id="dest" [(ngModel)]="planets_names.dest_2" (change)="getDistance(planets_names.dest_2)">
+    <option *ngFor="let planet of planets;" [value]="planet.name">{{planet.name}}</option>
   </select>
 </div>
 
 <br>
 
- <div>
-   <input type="radio"  name="vechicles"  >
-    <label for="male">dg</label><br>
+ <div *ngFor="let c of vechicles">
+   <input type="radio" 
+    name="vechicles" 
+    value="{{v}}"
+    (change)="setVechicleTwo(c)">
+    <label for="male">{{c.name}} ({{c.total_no}})</label><br>
 </div>
-
+<p style="color: green;">selected :{{radioSelected_one}}</p>
+<p>Time taken:{{time}}</p>
+<p style="color: red;" *ngIf="assign == true">{{assign_message}}</p>

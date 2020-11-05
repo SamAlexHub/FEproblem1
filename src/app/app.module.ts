@@ -12,6 +12,7 @@ import { DestinationOneComponent } from './destination-one/destination-one.compo
 import { DestinationTwoComponent } from './destination-two/destination-two.component';
 import { DestinationThreeComponent } from './destination-three/destination-three.component';
 import { DestinationFourComponent } from './destination-four/destination-four.component';
+import { SuccesspageComponent } from './successpage/successpage.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DestinationFourComponent } from './destination-four/destination-four.co
     DestinationOneComponent,
     DestinationTwoComponent,
     DestinationThreeComponent,
-    DestinationFourComponent
+    DestinationFourComponent,
+    SuccesspageComponent
   ],
   imports: [
     BrowserModule,

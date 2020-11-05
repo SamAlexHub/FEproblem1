@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from '../services/apiservices/api.service';
-import { Planets } from '../models/planets/planets';
+import { CommonService } from '../services/common/common.service';
 
 @Component({
   selector: 'app-falcon-search-page',
@@ -9,68 +10,58 @@ import { Planets } from '../models/planets/planets';
 })
 export class FalconSearchPageComponent implements OnInit {
 
-  constructor(public apiservices: ApiService) { }
+  constructor(public apiservices: ApiService, public common: CommonService,private router:Router) { }
 
-  vechicles = [];
-  const_vechicles = [];
-  planets = [];
+
   token;
-
-
-
-
-  selected_vechicle_distance = {
-    destination_1: '',
-    destination_2: '',
-    destination_3: '',
-    destination_4: ''
-  }
-
+  error;
+  time;
 
 
   ngOnInit() {
-    this.getToken();
-    this.getPlanets();
-    this.getVechiles();
+  this.getToken();
+  this.getTotalTime();
+ 
   }
-
 
   getToken() {
     this.apiservices.getToken().subscribe((response: any) => {
       if (response) {
         this.token = response.token;
-        console.log('token', this.token);
+        localStorage.setItem('token',this.token);
       }
     }, (err) => {
-      console.log('api error', err);
     });
   }
 
 
 
-  getPlanets() {
-    this.apiservices.getPlanets().subscribe((response: any) => {
-      if (response) {
-        this.planets = response;
-        console.log('planets', this.planets);
+  findFalcon() {
+    let data = this.common.body;
+    this.getfalcon(data);
+  }
+
+  getfalcon(body) {
+    this.apiservices.findFalcons(body).subscribe((res: any) => {
+      if (res.status == 'success') {
+         localStorage.setItem('planetfound',res.planet_name);
+         this.router.navigate(['success']);    
       }
     }, (err) => {
-      console.log('api error response, get planets', err);
-    });
+      this.error = err.error.error;
+      
+    })
   }
 
 
-  getVechiles() {
-    this.apiservices.getVechiles().subscribe((response: any) => {
-      if (response) {
-        this.vechicles = response;
-        this.const_vechicles = response
-        console.log('vechicles', this.vechicles);
-      }
-    }, (err) => {
-      console.log('api error response ,vechicles', err)
-    });
-  }
+getTotalTime()  {
+  this.common.newTime.subscribe((time:any) =>{
+    this.time = time;
+  })
+}
+
+
+
 
 
 

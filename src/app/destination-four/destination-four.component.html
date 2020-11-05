@@ -1,3 +1,16 @@
-<p>
-  destination-four works!
-</p>
+<div>
+  <label class="w-100" for="">Destination - 1</label>
+  <select name="planet" id="dest" [(ngModel)]="planets_names.dest_4" (change)="getDistance(planets_names.dest_4)">
+    <option *ngFor="let planet of planets;" [value]="planet.name">{{planet.name}}</option>
+  </select>
+</div>
+
+<br>
+
+ <div *ngFor="let v of vechicles">
+   <input type="radio" name="vechicles" (change)="setVechicleFour(v)">
+    <label for="male">{{v.name}} ({{v.total_no}})</label><br>
+</div>
+<p style="color: green;">selected :{{radioSelected_one}}</p>
+<p>Time taken:{{time}}</p>
+<p style="color: red;" *ngIf="assign == true">{{assign_message}}</p>

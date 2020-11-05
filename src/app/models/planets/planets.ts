@@ -1,8 +1,6 @@
 export class Planets {
-
-    destination_1:String;
-    destination_2:String;
-    destination_3:String;
-    destination_4:String;
-
+    dest_1:String;
+    dest_2:String;
+    dest_3:String;
+    dest_4:String;
 }

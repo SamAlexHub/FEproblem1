@@ -12,29 +12,42 @@ export class ApiService {
     if (window.location.hostname == 'localhost') {
       return "https://findfalcone.herokuapp.com/"
     }
-     else {  
+    else {
       return "https://findfalcone.herokuapp.com/"
     }
   }
 
-  getToken()  {
+  getToken() {
     let url = this.getHostURL() + 'token'
     let httpOptions = {
       headers: new HttpHeaders({
-        'Accept': 'application/json',    
+        'Accept': 'application/json',
       })
     };
-    return this.http.post(url,'', httpOptions);
+    return this.http.post(url, '', httpOptions);
   }
 
-  getPlanets()  {
-    let url = this.getHostURL() + 'planets' 
+  getPlanets() {
+    let url = this.getHostURL() + 'planets';
     return this.http.get(url);
   }
 
   getVechiles() {
-    let url = this.getHostURL() + 'vehicles' 
+    let url = this.getHostURL() + 'vehicles';
     return this.http.get(url);
+  }
+
+  findFalcons(data) {
+    console.log('data', data);
+    let url = this.getHostURL() + 'find';
+    let body = data;
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.post(url, body, httpOptions);
   }
 
 }
